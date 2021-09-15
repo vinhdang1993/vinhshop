@@ -30,7 +30,10 @@ function Shop() {
   useEffect(() => {
    const getAll = async()=>{
      try {
-       const { data } = await axios.get('/api/products')
+      // const url = 'https://vinhshop.herokuapp.com'
+       const { data } = await axios.get(`/api/products`)
+      //  const { data } = await axios.get(`/api/products`)
+
        const action = getProduct(data)
        dispatch(action)
      } catch (error) {    

@@ -11,7 +11,7 @@ Items.propTypes = {
 
 function Items(props) {
     const cartList = useSelector(state => state.CartSlice.Cart)
-    console.log(cartList)
+    // console.log(cartList)
 
 const handleAddToCart = (item) =>{
     const checkUser =  JSON.parse(localStorage.getItem('user'))
