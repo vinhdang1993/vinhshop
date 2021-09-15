@@ -1,5 +1,6 @@
 const express = require('express')
 // import express from ('express')
+var cors = require('cors')
 const dotenv = require('dotenv')
 const route = require('./routes/index.js')
 const db = require('./config/db');
@@ -8,7 +9,7 @@ dotenv.config();
 db.connectDB();
 
 const app = express()
-
+app.use(cors())
 
 app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json()); 
