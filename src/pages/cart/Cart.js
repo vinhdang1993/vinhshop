@@ -14,7 +14,7 @@ function Cart() {
 	const cartList = useSelector(state => state.CartSlice.Cart)
 	useEffect(() => {
 		const showCart = async() =>{
-			const {data} = await axios.get(`/api/cart/user=${userId}`)
+			const {data} = await axios.get(`https://vinhshop.herokuapp.com/api/cart/user=${userId}`)
 			const action = getCart(data)
 			dispatch(action)
 		}

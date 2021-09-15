@@ -14,7 +14,7 @@ function ProductsManage() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/products')
+        const { data } = await axios.get('https://vinhshop.herokuapp.com/api/products')
         const action = getProduct(data)
         dispath(action)
       } catch (error) {
@@ -30,7 +30,7 @@ const deleteProduct = (id) =>{
 }
 const handleCloseConfirm = () => setShowConfirm(false)
 const handleSubmitConfirm = () => {
-    axios.get(`/api/products/delete=${getId}`)
+    axios.get(`https://vinhshop.herokuapp.com/api/products/delete=${getId}`)
       .then(console.log('delete product success'))
   setShowConfirm(false)
 

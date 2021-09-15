@@ -16,7 +16,7 @@ function ItemsCategory(props) {
        const getData = async()=>{
         setLoad(false)
            try {
-               const {data} = await axios.get(`/api/products/category=${category}`)            
+               const {data} = await axios.get(`https://vinhshop.herokuapp.com/api/products/category=${category}`)            
                 setProducts(data)
                 setLoad(true)
            } catch (error) {

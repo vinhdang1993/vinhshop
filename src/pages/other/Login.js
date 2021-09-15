@@ -11,7 +11,7 @@ function Login() {
     useEffect(() => {
               const getInfo = async ()=>{
                   try {
-                      const {data} = await axios.get('/api/users')
+                      const {data} = await axios.get('https://vinhshop.herokuapp.com/api/users')
                     //   console.log(data.name in data)
                     setUsersDb(data)
                   } catch (error) {

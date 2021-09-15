@@ -14,7 +14,7 @@ function ProductDetail() {
 		const getProductId = async () => {
 			setLoad(false)
 			try {
-				const { data } = await axios.get(`/api/products/id=${productId}`)
+				const { data } = await axios.get(`https://vinhshop.herokuapp.com/api/products/id=${productId}`)
 				setProduct(data)
 				setLoad(true)
 			} catch (error) {

@@ -27,7 +27,7 @@ const handleAddToCart = (item) =>{
                             userId:userId,
         }
 
-        axios.post('/api/cart/addcart', data)
+        axios.post('https://vinhshop.herokuapp.com/api/cart/addcart', data)
     }
     // console.log(data)
 }

@@ -24,14 +24,12 @@ function Shop() {
   const begin = (currentPage -1) * limit
   const end = currentPage * limit
   const newProductList = productsList.slice(begin,end)
-  // if(page!== 1) setCurrentPage(page)
-// console.log(page)
-  // console.log('currentPage', currentPage)
+
   useEffect(() => {
    const getAll = async()=>{
      try {
-      // const url = 'https://vinhshop.herokuapp.com'
-       const { data } = await axios.get(`/api/products`)
+     
+       const { data } = await axios.get('https://vinhshop.herokuapp.com/api/products')
       //  const { data } = await axios.get(`/api/products`)
 
        const action = getProduct(data)

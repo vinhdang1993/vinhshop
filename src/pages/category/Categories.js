@@ -6,7 +6,7 @@ function Categories() {
   useEffect(() => {
     const getData = async()=>{
       try {
-        const { data } = await axios.get('/api/categories')
+        const { data } = await axios.get('https://vinhshop.herokuapp.com/api/categories')
         setCategory(data)
       } catch (error) {
         console.log(error)
