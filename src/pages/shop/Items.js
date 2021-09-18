@@ -32,7 +32,7 @@ const handleAddToCart = async(item) =>{
                             userId: userId,
         }
         toast.success("add to cart success!")
-        await axios.post('/api/cart/addcart', data)
+        await axios.post('https://vinhshop.herokuapp.com/api/cart/addcart', data)
         const action = addCart()
         dispatch(action)
         window.location=('/cart')
