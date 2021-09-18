@@ -2,35 +2,48 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import propTypes from 'prop-types';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import {useDispatch} from 'redux'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { addCart } from '../../features/cart/CartSlice';
 Items.propTypes = {
     newProductList: propTypes.array,
     
 };
 
 function Items(props) {
-    const cartList = useSelector(state => state.CartSlice.Cart)
-    // console.log(cartList)
 
-const handleAddToCart = (item) =>{
+   const dispatch = useDispatch()
+ 
+  const cartList = useSelector(state => state.CartSlice.Cart)
+const handleAddToCart = async(item) =>{
     const checkUser =  JSON.parse(localStorage.getItem('user'))
     const userId = checkUser.userID
+    // console.log(cartList)
     const checkCart = cartList.find((items) => items.productId === item._id)
     // console.log(checkCart)
     if(!checkCart){
-        const data = {productId : item._id,
+        const data = {      productId: item._id,
                             quantity: 1,
                             name: item.name,
                             price: item.price,
                             img: item.img,
-                            userId:userId,
+                            userId: userId,
         }
+        toast.success("add to cart success!")
+        await axios.post('/api/cart/addcart', data)
+        const action = addCart()
+        dispatch(action)
+        window.location=('/cart')
 
-        axios.post('https://vinhshop.herokuapp.com/api/cart/addcart', data)
+    }else{
+        toast.warn("this product is exist in cart")
     }
+   
     // console.log(data)
 }
+// const notify = () => toast("add to cart success");
 const {newProductList} = props
 // console.log(ProductsList)
     return (
@@ -38,7 +51,10 @@ const {newProductList} = props
 
        
             { newProductList.map( (item,index) => 
+            
                     <div key={index} className="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+                        {/* <button onClick={notify}>click me</button> */}
+                        <ToastContainer />
                     <div className="product">
                         <Link to={`/product/id=${item._id}`} className="img-prod"><img className="img-fluid" src={`/images/${item.img}`} alt="Colorlib Template" />
                             <div className="overlay"></div>

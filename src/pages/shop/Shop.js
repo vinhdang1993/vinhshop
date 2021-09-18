@@ -9,6 +9,8 @@ import { useParams } from 'react-router-dom';
 import ItemsCategory from './ItemsCategory';
 import Load from '../../components/load/Load';
 import Pag from '../../components/pagination/Pag';
+
+
 function Shop() {
 
   const productsList = useSelector(state => state.ProductSlice.Products);
@@ -25,13 +27,13 @@ function Shop() {
   const end = currentPage * limit
   const newProductList = productsList.slice(begin,end)
 
+
   useEffect(() => {
    const getAll = async()=>{
      try {
      
        const { data } = await axios.get('https://vinhshop.herokuapp.com/api/products')
       //  const { data } = await axios.get(`/api/products`)
-
        const action = getProduct(data)
        dispatch(action)
      } catch (error) {    

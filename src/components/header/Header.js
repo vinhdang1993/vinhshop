@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link, Switch, Route} from 'react-router-dom'
 import HomePage from '../../pages/home'
 import Contact from '../../pages/other/Contact'
@@ -11,8 +11,19 @@ import ProductsManage from '../../pages/manage/products/ProductsManage'
 import CreateProduct from '../../pages/manage/products/CreateProduct'
 import EditProduct from '../../pages/manage/products/EditProduct'
 import Cart from '../../pages/cart/Cart'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchDataAsync } from '../../features/cart/CartSlice'
 function Header() {
-  
+     const dispatch = useDispatch()
+    useEffect(() => {
+        const getCart = async() => {
+          const action = fetchDataAsync()
+          await dispatch(action)
+        }
+        getCart()
+      
+      }, [dispatch])
+   const count = useSelector(state => state.CartSlice.count)
 const checkUser = localStorage.getItem('user')
     // console.log(checkUser)
       const handleLogout = (e)=>{
@@ -82,7 +93,7 @@ const checkUser = localStorage.getItem('user')
               
 	          <li className="nav-item cta cta-colored">
               <Link to="/cart"  className="nav-link">
-                <span className="ion-ios-cart"></span>[0]</Link></li>
+                <span className="ion-ios-cart"></span>[{count}]</Link></li>
 
 	        </ul>
 	      </div>
@@ -121,7 +132,10 @@ const checkUser = localStorage.getItem('user')
                 <EditProduct />
             </Route>
             <Route path="/cart">
-                <Cart />
+            {checkUser === null 
+                ? <Login />
+                : <Cart />
+               }
             </Route>
             <Route path="/login">
                 <Login />

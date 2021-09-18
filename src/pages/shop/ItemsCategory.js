@@ -16,7 +16,7 @@ function ItemsCategory(props) {
        const getData = async()=>{
         setLoad(false)
            try {
-               const {data} = await axios.get(`https://vinhshop.herokuapp.com/api/products/category=${category}`)            
+               const {data} = await axios.get(`/api/products/category=${category}`)            
                 setProducts(data)
                 setLoad(true)
            } catch (error) {
@@ -46,15 +46,15 @@ function ItemsCategory(props) {
                     </div>
                     <div className="bottom-area d-flex px-3">
                         <div className="m-auto d-flex">
-                            <Link to="/#" className="add-to-cart d-flex justify-content-center align-items-center text-center">
+                            <button to="/#" className="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i className="ion-ios-menu"></i></span>
-                            </Link>
-                            <Link to="/#" className="buy-now d-flex justify-content-center align-items-center mx-1">
+                            </button>
+                            <button to="/#" className="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i className="ion-ios-cart"></i></span>
-                            </Link>
-                            <Link to="/#" className="heart d-flex justify-content-center align-items-center ">
+                            </button>
+                            <button to="/#" className="heart d-flex justify-content-center align-items-center ">
                                 <span><i className="ion-ios-heart"></i></span>
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
