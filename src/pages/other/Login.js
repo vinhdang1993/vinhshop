@@ -7,6 +7,7 @@ function Login() {
     const [userPassword, setUserPassword] = useState('123456')
     const getValueEmail = (e) => setUserEmail(e.target.value)
     const getValuePassword = (e) =>  setUserPassword(e.target.value)
+    const [errorMess, setErrorMess] = useState('')
     const [usersDb, setUsersDb] = useState([])
     const cssError = {
         "color" : "red",
@@ -32,9 +33,9 @@ function Login() {
                 const userInfo = {'email' : userEmail,'password': userPassword,'userID': check._id}
                 localStorage.setItem('user', JSON.stringify(userInfo) )
                 
-            }else console.log('password error')
+            }else setErrorMess('password invalid')
         }
-        else console.log('fail')
+        else setErrorMess('Your email invalid')
         
     }
     
@@ -44,10 +45,7 @@ function Login() {
             if(localStorage.getItem('user'))  window.location=('/')
     }
 
-    // const handCheck = (e) => {
-    //     e.preventDefault()
-    //     console.log(localStorage.removeItem('user'))
-    // }
+ 
     return (
         <div className="container">
             <div className="col-md-6">
@@ -59,7 +57,7 @@ function Login() {
                         required 
                         onChange={getValueEmail} 
                         className="form-control" placeholder="Your Email" />
-                        <p style={cssError}> *your  email invalid</p>
+                        
                     </div>
                     <div className="form-group">
                         <input type="password" 
@@ -68,6 +66,7 @@ function Login() {
                         value={userPassword}
                         onChange={getValuePassword} 
                         className="form-control" placeholder="Your password" />
+                        <p style={cssError}> {errorMess}</p>
                     </div>
                     <div className="form-group">
                         {/* <button onClick={handCheck}>test</button> */}
