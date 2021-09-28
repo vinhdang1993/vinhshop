@@ -8,11 +8,15 @@ function Login() {
     const getValueEmail = (e) => setUserEmail(e.target.value)
     const getValuePassword = (e) =>  setUserPassword(e.target.value)
     const [usersDb, setUsersDb] = useState([])
+    const cssError = {
+        "color" : "red",
+        "marginLeft": "0.8em"
+    }
     useEffect(() => {
               const getInfo = async ()=>{
                   try {
                       const {data} = await axios.get('https://vinhshop.herokuapp.com/api/users')
-                    //   console.log(data.name in data)
+                 
                     setUsersDb(data)
                   } catch (error) {
                       console.log(error)
@@ -51,13 +55,16 @@ function Login() {
                     {/* action="#" method="get" */}
                     <div className="form-group">
                         <input type="text" name="userEmail" 
-                        value={userEmail} 
+                        value={userEmail}
+                        required 
                         onChange={getValueEmail} 
                         className="form-control" placeholder="Your Email" />
+                        <p style={cssError}> *your  email invalid</p>
                     </div>
                     <div className="form-group">
                         <input type="password" 
                         name="userPassword" 
+                        required
                         value={userPassword}
                         onChange={getValuePassword} 
                         className="form-control" placeholder="Your password" />

@@ -26,9 +26,9 @@ function Cart() {
 	}, [userId,dispatch])
 
 
-	// const [count, setCount] = useState(0)
+	
 	const [total, setTotal] = useState(0)
-	// let result = {sum : 0 , subTotal :0}
+	
 	
 	
 	// const getQuantity = (a,b) => a + b

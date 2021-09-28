@@ -4,7 +4,8 @@ import React from 'react'
 import { Carousel } from 'react-bootstrap'
 // import Paypal from '../../components/paypal/Paypal.js'
 function HomePage() {
-// const [checkout, setCheckout] = useState(false)
+   
+
     return (
         <div className="home-slider owl-carousel owl-loaded owl-drag">
       

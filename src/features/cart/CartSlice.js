@@ -40,10 +40,10 @@ const cartSlice = createSlice({
             return {...state,Cart : newState,count : state.count > 0 ? state.count - 1 : state.count}
         },
         deleteCart:(state, action) =>{
-            // state.Cart.filter((item) => item.id !== action.payload)
+            const newCart = state.Cart.filter( (item) => item._id != action.payload)
             axios.get(`https://vinhshop.herokuapp.com/api/cart/deletecart=${action.payload}`)
-            // const newState = state.Cart.filter(item => item.productId !== action.payload)
-            return state
+            // asdads
+            return {...state, Cart : newCart}
          
         }
     },
