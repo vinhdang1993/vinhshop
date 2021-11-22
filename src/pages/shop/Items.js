@@ -19,6 +19,8 @@ function Items(props) {
   const cartList = useSelector(state => state.CartSlice.Cart)
 const handleAddToCart = async(item) =>{
     const checkUser =  JSON.parse(localStorage.getItem('user'))
+    if(!checkUser) window.location=('/login')
+    // console.log(checkUser)
     const userId = checkUser.userID
     // console.log(cartList)
     const checkCart = cartList.find((items) => items.productId === item._id)

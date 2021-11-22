@@ -20,7 +20,6 @@ function Cart() {
 			const {data} = await axios.get(`https://vinhshop.herokuapp.com/api/cart/user=${userId}`)
 			const action = getCart(data)
 			dispatch(action)
-			
 		}
 		showCart()
 	}, [userId,dispatch])

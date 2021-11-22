@@ -7,9 +7,9 @@ function Footer() {
       <div className="container">
       	<div className="row">
       		<div className="mouse">
-						<Link to="/" className="mouse-icon">
+						<a href="#ftco-navbar" className="mouse-icon">
 							<div className="mouse-wheel"><span className="ion-ios-arrow-up"></span></div>
-						</Link>
+						</a>
 					</div>
       	</div>
         <div className="row mb-5">
