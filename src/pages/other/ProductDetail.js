@@ -90,7 +90,7 @@ function ProductDetail() {
 										<p style={{ color: '#000' }}>600 kg available</p>
 									</div>
 								</div>
-								<p><button  className="btn btn-black py-3 px-5">Add to Cart</button></p>
+								<p><button  className="btn btn-black ">Add to Cart</button></p>
 							</div>
 						</div>
 					</div>
